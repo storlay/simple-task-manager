@@ -11,3 +11,7 @@ class UUIDSchema(BaseModel):
 class TimestampSchema(BaseModel):
     created_at: datetime
     updated_at: datetime
+
+
+class BaseHTTPExceptionSchema(BaseModel):
+    detail: str

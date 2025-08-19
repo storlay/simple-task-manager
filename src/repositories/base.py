@@ -1,3 +1,4 @@
+import uuid
 from typing import Any
 from typing import Generic
 from typing import Iterable
@@ -178,7 +179,7 @@ class BaseRepository(Generic[SchemaType]):
         data: SchemaType,
         partially: bool = False,
         **filter_by,
-    ) -> int:
+    ) -> uuid.UUID:
         """
         Update a single entity matching the filter criteria.
 
@@ -206,7 +207,7 @@ class BaseRepository(Generic[SchemaType]):
     async def delete_one(
         self,
         **filter_by,
-    ) -> int:
+    ) -> uuid.UUID:
         """
         Delete a single entity matching the filter criteria.
 
