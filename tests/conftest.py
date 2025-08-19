@@ -74,3 +74,12 @@ async def populate_db():
     ) as transaction:
         await transaction.task.add_bulk(tasks_to_add)
         await transaction.commit()
+
+
+@pytest.fixture
+def create_task_data():
+    return TaskCreateSchema(
+        name="Example task",
+        description="Example task description",
+        status=TaskStatus.IN_PROGRESS,
+    ).model_dump()
