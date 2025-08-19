@@ -27,8 +27,13 @@ class DatabaseSettings(BaseModel):
     )
 
 
+class PaginationSettings(BaseModel):
+    max_entities_per_page: int = 100
+
+
 class Settings(BaseSettings):
     db: DatabaseSettings = DatabaseSettings()
+    pagination: PaginationSettings = PaginationSettings()
 
 
 settings = Settings()
