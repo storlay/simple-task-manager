@@ -44,3 +44,6 @@ lines-after-imports = 2
 include = [
     "src",
 ]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
