@@ -33,7 +33,12 @@ class PaginationSettings(BaseModel):
 
 
 class AppSettings(BaseModel):
-    mode: Literal["TEST", "LOCAL", "DEV", "PROD"] = os.getenv("APP_MODE")
+    mode: Literal[
+        "TEST",
+        "LOCAL",
+        "DEV",
+        "PROD",
+    ] = os.getenv("APP_MODE")  # type: ignore
 
 
 class Settings(BaseSettings):
