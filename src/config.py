@@ -1,0 +1,27 @@
+import os
+from pathlib import Path
+
+from pydantic import BaseModel
+from pydantic import PostgresDsn
+from pydantic_settings import BaseSettings
+
+
+BASE_DIR = Path(__file__).parent.parent
+
+
+class DatabaseSettings(BaseModel):
+    name: str = os.getenv("POSTGRES_DB", "user")
+    user: str = os.getenv("POSTGRES_USER", "admin")
+    password: str = os.getenv("POSTGRES_PASSWORD", "admin")
+    host: str = os.getenv("DB_HOST", "localhost")
+    port: int = int(os.getenv("DB_PORT", "5432"))
+    url: PostgresDsn = (
+        f"postgresql+asyncpg://{user}:{password}@{host}:{port}/{name}"  # type: ignore
+    )
+
+
+class Settings(BaseSettings):
+    db: DatabaseSettings = DatabaseSettings()
+
+
+settings = Settings()
