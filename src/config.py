@@ -1,6 +1,7 @@
 import enum
 import os
 from pathlib import Path
+from typing import Literal
 
 from pydantic import BaseModel
 from pydantic import PostgresDsn
@@ -31,7 +32,12 @@ class PaginationSettings(BaseModel):
     max_entities_per_page: int = 100
 
 
+class AppSettings(BaseModel):
+    mode: Literal["TEST", "LOCAL", "DEV", "PROD"] = os.getenv("APP_MODE")
+
+
 class Settings(BaseSettings):
+    app: AppSettings = AppSettings()
     db: DatabaseSettings = DatabaseSettings()
     pagination: PaginationSettings = PaginationSettings()
 
