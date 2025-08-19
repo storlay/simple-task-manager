@@ -10,7 +10,7 @@ from src.config import settings
 
 
 async_engine = create_async_engine(
-    url=settings.postgres.url,  # type: ignore
+    url=settings.db.url,  # type: ignore
 )
 async_session = async_sessionmaker(
     async_engine,

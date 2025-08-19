@@ -13,7 +13,7 @@ from src.db import Base
 config = context.config
 config.set_main_option(
     "sqlalchemy.url",
-    settings.postgres.url,  # type: ignore
+    settings.db.url,  # type: ignore
 )
 
 
