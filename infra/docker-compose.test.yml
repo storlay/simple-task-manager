@@ -1,14 +1,17 @@
 services:
-  api:
+  test-api:
+    build:
+      context: ../
     container_name: task-manager-api-test
     command: ./infra/commands/test-api.sh
     env_file:
       - ../.env-test
     depends_on:
-      db:
+      test-db:
         condition: service_healthy
 
-  db:
+  test-db:
+    image: postgres:17.5
     container_name: task-manager-db-test
     ports:
       - "5433:5432"
