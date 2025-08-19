@@ -91,7 +91,7 @@ async def add_task(
     summary="Update one task",
     description="Update one task",
 )
-async def update_hotel_room_partial(
+async def update_task(
     task_id: uuid.UUID,
     transaction: DbTransactionDep,
     data: TaskUpdateSchema,
@@ -119,7 +119,7 @@ async def update_hotel_room_partial(
     summary="Delete one task",
     description="Delete one task",
 )
-async def delete_hotel_room(
+async def delete_task(
     task_id: uuid.UUID,
     transaction: DbTransactionDep,
 ) -> UUIDSchema:
