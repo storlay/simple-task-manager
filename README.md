@@ -14,8 +14,12 @@
     ```bash
     docker compose -f infra/docker-compose.local.yml up --build -d
     ```
+4. **Примените миграции**:
+   ```bash
+   docker exec task-manager-api uv run alembic upgrade head
+   ```
 
-4.  **Доступ к приложению:**
+5. **Доступ к приложению:**
 
     Приложение будет доступно по адресу `http://127.0.0.1:8000`.
 
