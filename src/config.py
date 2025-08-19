@@ -1,3 +1,4 @@
+import enum
 import os
 from pathlib import Path
 
@@ -7,6 +8,12 @@ from pydantic_settings import BaseSettings
 
 
 BASE_DIR = Path(__file__).parent.parent
+
+
+class TaskStatus(str, enum.Enum):
+    CREATED = "created"
+    IN_PROGRESS = "in_progress"
+    COMPLETED = "completed"
 
 
 class DatabaseSettings(BaseModel):
