@@ -1,0 +1,27 @@
+services:
+  api:
+    container_name: task-manager-api-test
+    command: ./infra/commands/test-api.sh
+    env_file:
+      - ../.env-test
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    container_name: task-manager-db-test
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data_test:/var/lib/postgresql/data
+    env_file:
+      - ../.env-test
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+volumes:
+  postgres_data_test:
