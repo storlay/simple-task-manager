@@ -38,6 +38,6 @@
 
 2.  **Запуск тестов:**
     ```bash
-    docker-compose -f infra/docker-compose.test.yml up --build --abort-on-container-exit
+    docker compose -f infra/docker-compose.test.yml up --build --abort-on-container-exit
     ```
     Эта команда запустит необходимые сервисы, выполнит тесты, а затем автоматически завершит их работу.
