@@ -15,21 +15,21 @@ class TaskCreateSchema(BaseModel):
     ]
     description: Annotated[
         str,
-        MaxLen(100),
+        MaxLen(2000),
     ]
-    status: TaskStatus
+    status: TaskStatus | None
 
 
 class TaskUpdateSchema(BaseModel):
     name: Annotated[
         str | None,
         MaxLen(100),
-    ]
+    ] = None
     description: Annotated[
         str | None,
-        MaxLen(100),
-    ]
-    status: TaskStatus | None
+        MaxLen(2000),
+    ] = None
+    status: TaskStatus | None = None
 
 
 class TaskSchema(
